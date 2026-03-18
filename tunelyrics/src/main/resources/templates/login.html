@@ -2,31 +2,121 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
 <head>
     <meta charset="UTF-8">
-    <title>Tunelyrics - Login</title>
+    <title>TuneLyrics - Login</title>
+
+    <style>
+        body {
+            background-color: #f0f8ff; /* Light blue background */
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #333; /* Dark gray for the title */
+        }
+
+        .form-label {
+            color: #555; /* Medium gray for labels */
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .form-outline {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue button */
+            border-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #004085;
+        }
+
+        .form-check-label {
+            color: #555; /* Gray for remember me label */
+        }
+
+        a {
+            color: #007bff; /* Blue color for links */
+        }
+
+        a:hover {
+            color: #0056b3; /* Darker blue on hover for links */
+        }
+
+        .text-center p {
+            color: #333; /* Dark gray for the registration text */
+        }
+
+        .form-check-input:checked {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .form-check-input:focus {
+            border-color: #007bff;
+        }
+    </style>
 </head>
 <body>
+
 <section>
+
     <div class="row">
-        <div class="col-sm-6 offset-md-3 pt-5">
-            <h1 class="text-center">Login</h1>
-            <form th:action="@{/login}" method="post">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Email</label>
-                    <input type="email" name="username" class="form-control" id="username" required>
+        <div class="col-sm-4 offset-md-4 pt-3">
+            <h1 class="text-center">LOGIN</h1>
+            <form method="post" th:action="@{/login}">
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" name="username" id="username" class="form-control" />
+                    <label class="form-label" for="username">Username</label>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" required>
+
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" name="password" id="password" class="form-control" />
+                    <label class="form-label" for="password">Password</label>
                 </div>
+
+                <!-- 2 column grid layout for inline styling -->
+                <div class="row mb-4 text-center">
+                    <div class="col d-flex justify-content-center">
+                        <!-- Checkbox -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                            <label class="form-check-label" for="form2Example31"> Remember me </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <!-- Simple link -->
+                        <a href="#!">Forgot password?</a>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block mb-3">Login</button>
+                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
                 </div>
+
+                <!-- Register buttons -->
                 <div class="text-center">
-                    <p>Don't have an account? <a href="/register">Register</a></p>
+                    <p>Not a member? <a href="/register">Register</a></p>
                 </div>
             </form>
+
         </div>
     </div>
 </section>
 </body>
-</html>
