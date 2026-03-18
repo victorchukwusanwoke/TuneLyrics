@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Users</title>
+</head>
+<body>
+<section>
+    <div class="row">
+        <div class="col-sm-10 offset-md-1 pt-5">
+            <h1>All Users</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.email}">user@example.com</td>
+                    <td th:text="${user.role}">ROLE_UPLOADER</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html>

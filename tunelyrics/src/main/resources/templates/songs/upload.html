@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Song - Tunelyrics</title>
+</head>
+<body>
+<section>
+    <div class="row">
+        <div class="col-sm-8 offset-md-2 pt-5">
+            <h1>Upload a New Song</h1>
+
+            <form th:action="@{/songs/upload}" th:object="${songDTO}" method="post">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" th:field="*{title}" class="form-control" id="title" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="artist" class="form-label">Artist</label>
+                    <input type="text" th:field="*{artist}" class="form-control" id="artist" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lyrics" class="form-label">Lyrics</label>
+                    <textarea th:field="*{lyrics}" class="form-control" id="lyrics" rows="10" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="youtubeUrl" class="form-label">YouTube URL</label>
+                    <input type="url" th:field="*{youtubeUrl}" class="form-control" id="youtubeUrl">
+                </div>
+
+                <div class="mb-3">
+                    <label for="spotifyUrl" class="form-label">Spotify URL</label>
+                    <input type="url" th:field="*{spotifyUrl}" class="form-control" id="spotifyUrl">
+                </div>
+
+                <div class="mb-3">
+                    <label for="mp3Url" class="form-label">MP3 URL</label>
+                    <input type="url" th:field="*{mp3Url}" class="form-control" id="mp3Url">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Upload</button>
+                <a href="/songs" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>
