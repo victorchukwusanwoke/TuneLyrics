@@ -7,11 +7,10 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    //To find users by their email
-    User findAllByEmail(String email);
+    User findByEmail(String email);
+    User findByUsername(String username);
 
     //to list users by role ADMIN or UPLOADER
-    List<User> findAllByRole(String role);
+    List <User> findAllByRole(String role);
 
-    User findByEmail(String email);
 }

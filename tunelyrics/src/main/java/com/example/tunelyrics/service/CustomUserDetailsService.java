@@ -20,28 +20,28 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Autowired
-    public CustomUserDetailsService(UserRepository userRepository) {this.userRepository = userRepository;}
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-        User user = userRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
 
-        if(user != null){
+        if(user != null) {
             return new org.springframework.security.core.userdetails.User(
-                    user.getEmail(),
-                    user.getPassword(),
-                    mapRolesToAuthorities(user.getRole())
+                    user.getUsername(), user.getPassword(),  mapRolesToAuthorities(user.getRole())
             );
         }
         else {
-            throw new UsernameNotFoundException("Invalid email");
+            throw new UsernameNotFoundException("Invalid username");
         }
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(String role) {
-        Collection<String> roles = new ArrayList<>(0);
+        Collection<String> roles = new ArrayList<>();
         roles.add(role);
-        Collection<?extends  GrantedAuthority> mapRoles = roles.stream().map(r -> new SimpleGrantedAuthority(r)).collect(Collectors.toList());
+        Collection<? extends GrantedAuthority> mapRoles = roles.stream().map(r -> new SimpleGrantedAuthority(r)).collect(Collectors.toList());
         return mapRoles;
     }
 }

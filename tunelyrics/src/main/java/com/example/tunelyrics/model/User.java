@@ -20,6 +20,9 @@ public class User {
     private Long id;
 
     @Column(length = 250, unique = true, nullable = false)
+    private String username;
+
+    @Column(length = 250, nullable = false)
     private String email;
 
     @Column(length = 250, nullable = false)
